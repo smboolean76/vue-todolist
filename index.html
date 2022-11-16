@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue 3 Todo list</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Boolean">
+        </div>
+
+        <form class="new-task" @submit.prevent="addTodo">
+            <input type="text" v-model="textNewTodo" placeholder="Inserisci testo todo" minlength="5" required/>
+            <button type="submit">Aggiungi</button>
+        </form>
+
+        <div class="tasks-container">
+            <ul>
+                <li class="task" v-for="(todo, index) in todoList">
+                    <span :class="{ 'task-done': todo.done }" @click="onClickTodo(todo)">{{ todo.text }}</span>
+                    <i class="fas fa-times" @click="removeTodo(index)"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
