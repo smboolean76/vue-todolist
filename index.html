@@ -20,12 +20,13 @@
         </form>
 
         <div class="tasks-container">
-            <ul>
+            <ul v-if="todoList.length > 0">
                 <li class="task" v-for="(todo, index) in todoList">
                     <span :class="{ 'task-done': todo.done }" @click="onClickTodo(todo)">{{ todo.text }}</span>
                     <i class="fas fa-times" @click="removeTodo(index)"></i>
                 </li>
             </ul>
+            <h2 v-else>Non sono presenti todo 🫡</h2>
         </div>
     </div>
     <script src="main.js"></script>
